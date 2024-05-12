@@ -55,9 +55,14 @@ function RootLayoutNav() {
   return (
     // <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
     <ThemeProvider value={DefaultTheme}>
-      <Stack>
+      <Stack
+        screenOptions={{
+          statusBarStyle: "dark",
+          navigationBarColor: "white",
+        }}
+      >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+        <Stack.Screen name="panier" options={{ presentation: "modal" }} />
       </Stack>
     </ThemeProvider>
   );

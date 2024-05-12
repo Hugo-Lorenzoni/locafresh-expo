@@ -1,0 +1,185 @@
+const producteurs = [
+  {
+    id: 1,
+    nom: "Ferme de la Prairie",
+    adresse: "Rue de la Prairie 12, 7011 Ghlin",
+    telephone: "065/12.34.56",
+    email: "contact@fermedelaprairie.be",
+    image: require("@assets/images/producteurs/fermedelaprairie.jpg"),
+    produits: [
+      {
+        id: 1,
+        nom: "Lait",
+        image: require("@assets/images/produits/lait.jpg"),
+        prix: 1.5,
+      },
+      {
+        id: 2,
+        nom: "Beurre",
+        image: require("@assets/images/produits/beurre.jpg"),
+        prix: 1,
+      },
+      {
+        id: 3,
+        nom: "Fromage",
+        image: require("@assets/images/produits/fromage.jpg"),
+        prix: 4,
+      },
+    ],
+  },
+  {
+    id: 2,
+    nom: "Vergers du Soleil",
+    adresse: "Chaussée de Binche 82, 7000 Mons",
+    telephone: "071/23.45.67",
+    email: "info@vergersdusoleil.be",
+    image: require("@assets/images/producteurs/vergersdusoleil.jpg"),
+    produits: [
+      {
+        id: 1,
+        nom: "Pommes",
+        image: require("@assets/images/produits/pommes.jpg"),
+        prix: 1,
+      },
+      {
+        id: 2,
+        nom: "Poires",
+        image: require("@assets/images/produits/poires.jpg"),
+        prix: 1.5,
+      },
+      {
+        id: 3,
+        nom: "Cerises",
+        image: require("@assets/images/produits/cerises.jpg"),
+        prix: 3,
+      },
+    ],
+  },
+  {
+    id: 3,
+    nom: "Miel du Vallon",
+    adresse: "Chemin du Vallon 20, 7020 Nimy",
+    telephone: "069/34.56.78",
+    email: "mieleduvallon@gmail.com",
+    image: require("@assets/images/producteurs/mielduvallon.jpg"),
+    produits: [
+      {
+        id: 1,
+        nom: "Miel de fleurs",
+        image: require("@assets/images/produits/mieldefleurs.jpg"),
+        prix: 2.5,
+      },
+      {
+        id: 2,
+        nom: "Miel de sapin",
+        image: require("@assets/images/produits/mielsapin.jpg"),
+        prix: 3,
+        enStock: false,
+      },
+      {
+        id: 3,
+        nom: "Miel de tilleul",
+        image: require("@assets/images/produits/mieltilleul.jpg"),
+        prix: 3.5,
+      },
+    ],
+  },
+  {
+    id: 4,
+    nom: "La Ferme du Petit Ruisseau",
+    adresse: "Rue du Fromage 14, 7050 Jurbise",
+    telephone: "070/67.89.01",
+    email: "fermedupetitruisseau@hotmail.com",
+    image: require("@assets/images/producteurs/fermedupetitruisseau.jpg"),
+    produits: [
+      {
+        id: 1,
+        nom: "Lait",
+        image: require("@assets/images/produits/lait.jpg"),
+        prix: 1.5,
+      },
+      {
+        id: 2,
+        nom: "Beurre",
+        image: require("@assets/images/produits/beurre.jpg"),
+        prix: 1.2,
+      },
+      {
+        id: 3,
+        nom: "Oeufs",
+        image: require("@assets/images/produits/oeufs.jpg"),
+        prix: 2.3,
+      },
+    ],
+  },
+  {
+    id: 5,
+    nom: "La Crèmerie du Coin",
+    adresse: "Rue de la Rivière 30, 7041 Givry",
+    telephone: "071/90.12.34",
+    email: "lacremerieducoin@email.com",
+    image: require("@assets/images/producteurs/lacremerieducoin.jpg"),
+    produits: [
+      {
+        id: 1,
+        nom: "Lait",
+        image: require("@assets/images/produits/lait.jpg"),
+        prix: 1.1,
+      },
+      {
+        id: 2,
+        nom: "Beurre",
+        image: require("@assets/images/produits/beurre.jpg"),
+        prix: 1.2,
+      },
+      {
+        id: 3,
+        nom: "Platteau de fromage",
+        image: require("@assets/images/produits/platteaudefromage.jpg"),
+        prix: 5.5,
+      },
+      {
+        id: 4,
+        nom: "Oeufs",
+        image: require("@assets/images/produits/oeufs.jpg"),
+        prix: 2.5,
+      },
+      {
+        id: 5,
+        nom: "Crème",
+        image: require("@assets/images/produits/creme.jpg"),
+        prix: 1.8,
+      },
+    ],
+  },
+  {
+    id: 6,
+    nom: "Laiterie du Coteau",
+    adresse: "Rue du Petit Ruisseau 9, 7021 Havré",
+    telephone: "067/23.45.67",
+    email: "laiterieducoteau@email.com",
+    image: require("@assets/images/producteurs/laiterieducoteau.jpg"),
+    produits: [
+      {
+        id: 1,
+        nom: "Lait",
+        image: require("@assets/images/produits/lait.jpg"),
+        prix: 1.3,
+      },
+      {
+        id: 2,
+        nom: "Beurre",
+        image: require("@assets/images/produits/beurre.jpg"),
+        prix: 1.1,
+      },
+      {
+        id: 3,
+        nom: "Yaourts",
+        image: require("@assets/images/produits/yaourts.jpg"),
+        prix: 2,
+      },
+    ],
+  },
+];
+
+export default producteurs;
