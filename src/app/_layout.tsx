@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/components/useColorScheme";
+import CartProvider from "@/providers/CartProvider";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -55,15 +56,17 @@ function RootLayoutNav() {
   return (
     // <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
     <ThemeProvider value={DefaultTheme}>
-      <Stack
-        screenOptions={{
-          statusBarStyle: "dark",
-          navigationBarColor: "white",
-        }}
-      >
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="panier" options={{ presentation: "modal" }} />
-      </Stack>
+      <CartProvider>
+        <Stack
+          screenOptions={{
+            statusBarStyle: "dark",
+            navigationBarColor: "white",
+          }}
+        >
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="panier" options={{ presentation: "modal" }} />
+        </Stack>
+      </CartProvider>
     </ThemeProvider>
   );
 }

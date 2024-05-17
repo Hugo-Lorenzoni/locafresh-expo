@@ -1,8 +1,12 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 
 import producteurs from "@/constants/Producteurs";
+import Colors from "@/constants/Colors";
+import { FontAwesome } from "@expo/vector-icons";
+import { useState } from "react";
+import { useCart } from "@/providers/CartProvider";
 
 const ProduitPage = () => {
   const { id_producteur, id_produit } = useLocalSearchParams();
@@ -14,6 +18,15 @@ const ProduitPage = () => {
   );
   if (!produit || !id_produit || id_produit instanceof Array)
     return <Text>Producteur introuvable</Text>;
+
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+
+  const handlePress = async () => {
+    if (quantity < 1 || produit.enStock === false) return;
+    addToCart(produit, quantity);
+  };
+
   return (
     <View style={styles.container}>
       <Stack.Screen options={{ title: produit.nom }} />
@@ -44,6 +57,57 @@ const ProduitPage = () => {
         <Text style={{ fontSize: 20, fontWeight: 600 }}>Prix :</Text>
         <Text style={{ fontSize: 20, fontWeight: 600 }}>{produit.prix} €</Text>
       </View>
+      {produit.enStock === false ? (
+        <Pressable
+          style={[styles.button, { opacity: 0.5, marginTop: "auto" }]}
+          disabled
+        >
+          <Text
+            style={{
+              fontWeight: 600,
+              fontSize: 20,
+              color: "white",
+              fontStyle: "italic",
+            }}
+          >
+            Épuisé
+          </Text>
+        </Pressable>
+      ) : (
+        <>
+          <View style={styles.quantity}>
+            <Pressable
+              style={[
+                styles.quantityButton,
+                { opacity: quantity <= 1 ? 0.5 : 1 },
+              ]}
+              onPress={() => setQuantity(quantity - 1)}
+              disabled={quantity <= 1}
+            >
+              <Text style={{ fontSize: 20, fontWeight: 600 }}>-</Text>
+            </Pressable>
+            <Text style={{ fontSize: 20, fontWeight: 600 }}>
+              Quantité : {quantity}
+            </Text>
+            <Pressable
+              style={styles.quantityButton}
+              onPress={() => setQuantity(quantity + 1)}
+            >
+              <Text style={{ fontSize: 20, fontWeight: 600 }}>+</Text>
+            </Pressable>
+          </View>
+          <Pressable style={styles.button} onPress={() => handlePress()}>
+            <Text style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
+              Ajouter au panier
+            </Text>
+            <FontAwesome
+              style={{ color: "white" }}
+              name="shopping-basket"
+              size={20}
+            />
+          </Pressable>
+        </>
+      )}
     </View>
   );
 };
@@ -71,16 +135,37 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: "white",
-    borderStyle: "solid",
-    borderColor: "lightgrey",
-    borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 10,
     padding: 10,
     paddingTop: 5,
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
   },
-
   info: { gap: 5, flexDirection: "row", alignItems: "center" },
+  button: {
+    backgroundColor: Colors.light.tint,
+    flexDirection: "row",
+    gap: 10,
+    padding: 10,
+    paddingTop: 7.5,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  quantity: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: "auto",
+    marginBottom: 10,
+  },
+  quantityButton: {
+    width: 50,
+    aspectRatio: 1,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
 });

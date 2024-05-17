@@ -1,15 +1,29 @@
+import CartListItem from "@/components/CartListItem";
+import { useCart } from "@/providers/CartProvider";
 import { Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 const Panier = () => {
+  const { items, total } = useCart();
   return (
-    <View>
+    <View style={styles.container}>
       <Stack.Screen options={{ title: "Panier" }} />
-      <Text>Panier</Text>
+      <FlatList
+        data={items}
+        renderItem={({ item }) => <CartListItem item={item} />}
+        contentContainerStyle={{
+          rowGap: 5,
+        }}
+      ></FlatList>
+      <Text>{total} €</Text>
     </View>
   );
 };
 
 export default Panier;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});

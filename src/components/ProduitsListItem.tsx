@@ -41,9 +41,6 @@ const ProduitsListItem = ({ produit, id }: ProduitsListItemProps) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
-    borderStyle: "solid",
-    borderColor: "lightgrey",
-    borderWidth: 1,
     borderRadius: 15,
     padding: 10,
     flexDirection: "row",
@@ -59,6 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginLeft: 10,
+    gap: 10,
   },
 });
 

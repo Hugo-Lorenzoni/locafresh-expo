@@ -49,11 +49,11 @@ const ProducteurPage = () => {
           <Text>{producteur.email}</Text>
         </View>
       </View>
-
       <Text
         style={{
           fontWeight: 500,
-          marginVertical: 10,
+          marginTop: 10,
+          marginBottom: 5,
           fontSize: 20,
         }}
       >
@@ -95,9 +95,6 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: "white",
-    borderStyle: "solid",
-    borderColor: "lightgrey",
-    borderWidth: 1,
     borderRadius: 15,
     padding: 10,
     paddingTop: 5,
