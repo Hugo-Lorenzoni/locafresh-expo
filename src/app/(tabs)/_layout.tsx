@@ -65,6 +65,10 @@ export default function TabLayout() {
         name="commandes"
         options={{
           title: "Vos commandes",
+          headerTitleStyle: {
+            fontFamily: "DegularSemibold",
+            fontSize: 25,
+          },
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
         }}
       />

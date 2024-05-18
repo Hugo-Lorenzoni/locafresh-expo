@@ -8,5 +8,14 @@ export default function AuthLayout() {
     return <Redirect href={"/"} />;
   }
 
-  return <Stack />;
+  return (
+    <Stack
+      screenOptions={{
+        headerTitleStyle: {
+          fontFamily: "DegularSemibold",
+          fontSize: 25,
+        },
+      }}
+    />
+  );
 }

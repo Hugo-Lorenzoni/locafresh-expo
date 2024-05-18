@@ -15,6 +15,7 @@ import Colors from "@/constants/Colors";
 import { z } from "zod";
 import { supabase } from "@/lib/supabase";
 import { FontText } from "@/components/FontText";
+import { FontTextInput } from "@/components/FontTextInput";
 
 const FormData = z.object({
   email: z.string().email("Veuillez entrer une adresse email valide"),
@@ -55,7 +56,7 @@ export default function LogIn() {
         contentFit="contain"
       />
       <FontText style={styles.label}>Email</FontText>
-      <TextInput
+      <FontTextInput
         value={email}
         onChangeText={setEmail}
         placeholder="email@gmail.com"
@@ -63,7 +64,7 @@ export default function LogIn() {
       />
 
       <FontText style={styles.label}>Mot de passe</FontText>
-      <TextInput
+      <FontTextInput
         value={password}
         onChangeText={setPassword}
         placeholder=""

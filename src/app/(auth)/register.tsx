@@ -15,6 +15,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { z } from "zod";
 import { supabase } from "@/lib/supabase";
 import { FontText } from "@/components/FontText";
+import { FontTextInput } from "@/components/FontTextInput";
 
 const FormData = z
   .object({
@@ -61,7 +62,7 @@ export default function Register() {
         contentFit="contain"
       />
       <FontText style={styles.label}>Email</FontText>
-      <TextInput
+      <FontTextInput
         value={email}
         onChangeText={setEmail}
         placeholder="email@gmail.com"
@@ -69,7 +70,7 @@ export default function Register() {
       />
 
       <FontText style={styles.label}>Mot de passe</FontText>
-      <TextInput
+      <FontTextInput
         value={password}
         onChangeText={setPassword}
         placeholder=""
@@ -78,7 +79,7 @@ export default function Register() {
       />
 
       <FontText style={styles.label}>Confirmer le mot de passe</FontText>
-      <TextInput
+      <FontTextInput
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         placeholder=""

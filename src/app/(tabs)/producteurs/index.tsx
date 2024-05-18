@@ -5,6 +5,7 @@ import Colors from "@/constants/Colors";
 import producteurs from "@/constants/Producteurs";
 
 import { useState } from "react";
+import { FontTextInput } from "@/components/FontTextInput";
 
 export default function NosProducteursScreen() {
   const [search, setSearch] = useState("");
@@ -13,7 +14,7 @@ export default function NosProducteursScreen() {
   );
   return (
     <>
-      <TextInput
+      <FontTextInput
         style={styles.input}
         cursorColor={Colors["light"].tint}
         inputMode="text"
