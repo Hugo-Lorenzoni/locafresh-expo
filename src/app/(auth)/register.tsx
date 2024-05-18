@@ -14,6 +14,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 import { z } from "zod";
 import { supabase } from "@/lib/supabase";
+import { FontText } from "@/components/FontText";
 
 const FormData = z
   .object({
@@ -59,7 +60,7 @@ export default function Register() {
         source={require("@assets/images/locafresh_condensed.png")}
         contentFit="contain"
       />
-      <Text style={styles.label}>Email</Text>
+      <FontText style={styles.label}>Email</FontText>
       <TextInput
         value={email}
         onChangeText={setEmail}
@@ -67,7 +68,7 @@ export default function Register() {
         style={styles.input}
       />
 
-      <Text style={styles.label}>Mot de passe</Text>
+      <FontText style={styles.label}>Mot de passe</FontText>
       <TextInput
         value={password}
         onChangeText={setPassword}
@@ -76,7 +77,7 @@ export default function Register() {
         secureTextEntry
       />
 
-      <Text style={styles.label}>Confirmer le mot de passe</Text>
+      <FontText style={styles.label}>Confirmer le mot de passe</FontText>
       <TextInput
         value={confirmPassword}
         onChangeText={setConfirmPassword}
@@ -85,7 +86,7 @@ export default function Register() {
         secureTextEntry
       />
 
-      {error && <Text style={{ color: "red" }}>{error}</Text>}
+      {error && <FontText style={{ color: "red" }}>{error}</FontText>}
 
       <Pressable
         style={[styles.button, { opacity: loading ? 0.5 : 1 }]}
@@ -93,14 +94,14 @@ export default function Register() {
         disabled={loading}
       >
         {loading ? (
-          <Text style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
+          <FontText style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
             Chargement...
-          </Text>
+          </FontText>
         ) : (
           <>
-            <Text style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
+            <FontText style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
               S'inscrire
-            </Text>
+            </FontText>
             <FontAwesome5
               style={{ color: "white" }}
               name="user-plus"

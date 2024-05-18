@@ -1,6 +1,7 @@
 import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
+import { FontText } from "./FontText";
 
 type ProduitsListItemProps = {
   item: {
@@ -25,7 +26,7 @@ const ProduitsListItem = ({ item }: ProduitsListItemProps) => {
             flexShrink: 1,
           }}
         >
-          <Text
+          <FontText
             style={{
               fontWeight: 600,
               fontSize: 20,
@@ -33,17 +34,21 @@ const ProduitsListItem = ({ item }: ProduitsListItemProps) => {
             }}
           >
             {item.produit.nom}
-          </Text>
+          </FontText>
           {item.produit.enStock === false && (
-            <Text style={{ fontStyle: "italic" }}>Épuisé</Text>
+            <FontText style={{ fontStyle: "italic" }}>Épuisé</FontText>
           )}
         </View>
-        <Text style={{ fontSize: 15, fontStyle: "italic", textAlign: "right" }}>
+        <FontText
+          style={{ fontSize: 15, fontStyle: "italic", textAlign: "right" }}
+        >
           {item.produit.prix} €
-        </Text>
-        <Text style={{ fontSize: 15, fontStyle: "italic", textAlign: "right" }}>
+        </FontText>
+        <FontText
+          style={{ fontSize: 15, fontStyle: "italic", textAlign: "right" }}
+        >
           Quantité : {item.quantity}
-        </Text>
+        </FontText>
       </View>
     </View>
   );

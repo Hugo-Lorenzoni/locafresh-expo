@@ -1,4 +1,5 @@
 import CartListItem from "@/components/CartListItem";
+import { FontText } from "@/components/FontText";
 import { useCart } from "@/providers/CartProvider";
 import { Stack } from "expo-router";
 import { FlatList, StyleSheet, Text, View } from "react-native";
@@ -15,7 +16,7 @@ const Panier = () => {
           rowGap: 5,
         }}
       ></FlatList>
-      <Text>{total} €</Text>
+      <FontText>{total} €</FontText>
     </View>
   );
 };

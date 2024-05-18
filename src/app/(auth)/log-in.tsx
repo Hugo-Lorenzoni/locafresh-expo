@@ -14,6 +14,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { z } from "zod";
 import { supabase } from "@/lib/supabase";
+import { FontText } from "@/components/FontText";
 
 const FormData = z.object({
   email: z.string().email("Veuillez entrer une adresse email valide"),
@@ -53,7 +54,7 @@ export default function LogIn() {
         source={require("@assets/images/locafresh_condensed.png")}
         contentFit="contain"
       />
-      <Text style={styles.label}>Email</Text>
+      <FontText style={styles.label}>Email</FontText>
       <TextInput
         value={email}
         onChangeText={setEmail}
@@ -61,7 +62,7 @@ export default function LogIn() {
         style={styles.input}
       />
 
-      <Text style={styles.label}>Mot de passe</Text>
+      <FontText style={styles.label}>Mot de passe</FontText>
       <TextInput
         value={password}
         onChangeText={setPassword}
@@ -70,7 +71,7 @@ export default function LogIn() {
         secureTextEntry
       />
 
-      {error && <Text style={{ color: "red" }}>{error}</Text>}
+      {error && <FontText style={{ color: "red" }}>{error}</FontText>}
 
       <Pressable
         style={[styles.button, { opacity: loading ? 0.5 : 1 }]}
@@ -78,14 +79,14 @@ export default function LogIn() {
         disabled={loading}
       >
         {loading ? (
-          <Text style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
+          <FontText style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
             Chargement...
-          </Text>
+          </FontText>
         ) : (
           <>
-            <Text style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
+            <FontText style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
               Se connecter
-            </Text>
+            </FontText>
             <FontAwesome5 style={{ color: "white" }} name="check" size={20} />
           </>
         )}

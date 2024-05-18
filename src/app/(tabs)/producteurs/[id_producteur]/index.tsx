@@ -6,19 +6,20 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import ProduitsListItem from "@/components/ProduitsListItem";
 
 import producteurs from "@/constants/Producteurs";
+import { FontText } from "@/components/FontText";
 
 const ProducteurPage = () => {
   const { id_producteur } = useLocalSearchParams();
   const producteur = producteurs.find((p) => p.id.toString() === id_producteur);
   if (!producteur || !id_producteur || id_producteur instanceof Array)
-    return <Text>Producteur introuvable</Text>;
+    return <FontText>Producteur introuvable</FontText>;
   return (
     <View style={styles.container}>
       <Stack.Screen options={{ title: producteur.nom }} />
       <View>
         <Image style={styles.image} source={producteur.image} />
         <View style={styles.absoluteContainer}>
-          <Text
+          <FontText
             style={{
               fontWeight: 600,
               fontSize: 25,
@@ -32,24 +33,24 @@ const ProducteurPage = () => {
             }}
           >
             {producteur.nom}
-          </Text>
+          </FontText>
         </View>
       </View>
       <View style={styles.card}>
         <View style={styles.info}>
           <FontAwesome6 name="house" />
-          <Text>{producteur.adresse}</Text>
+          <FontText>{producteur.adresse}</FontText>
         </View>
         <View style={styles.info}>
           <FontAwesome6 name="phone-volume" />
-          <Text>{producteur.telephone}</Text>
+          <FontText>{producteur.telephone}</FontText>
         </View>
         <View style={styles.info}>
           <FontAwesome6 name="at" />
-          <Text>{producteur.email}</Text>
+          <FontText>{producteur.email}</FontText>
         </View>
       </View>
-      <Text
+      <FontText
         style={{
           fontWeight: 500,
           marginTop: 10,
@@ -58,7 +59,7 @@ const ProducteurPage = () => {
         }}
       >
         Produits
-      </Text>
+      </FontText>
       <FlatList
         data={producteur.produits}
         renderItem={({ item }) => (

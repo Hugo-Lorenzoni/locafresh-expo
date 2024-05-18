@@ -3,6 +3,7 @@ import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
+import { FontText } from "./FontText";
 
 type ProduitsListItemProps = {
   id: string;
@@ -29,36 +30,41 @@ const ProduitsListItem = ({ produit, id }: ProduitsListItemProps) => {
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontSize: 20, marginVertical: 5 }}>
+              <FontText style={{ fontSize: 25, marginVertical: 5 }}>
                 {produit.nom}
-              </Text>
+              </FontText>
               {produit.enStock === false && (
-                <Text
+                <FontText
                   style={{
                     fontStyle: "italic",
                     backgroundColor: "darkgrey",
                     color: "white",
-                    padding: 5,
+                    paddingBottom: 5,
+                    paddingTop: 2.5,
                     paddingHorizontal: 10,
                     borderRadius: 10,
                   }}
                 >
                   Épuisé
-                </Text>
+                </FontText>
               )}
             </View>
-            <Text
+            <FontText
               style={{
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: "bold",
                 color: Colors.light.tint,
                 fontStyle: "italic",
               }}
             >
               {produit.prix} €
-            </Text>
+            </FontText>
           </View>
-          <FontAwesome6 name="chevron-right" size={20} />
+          <FontAwesome6
+            style={{ color: Colors.light.tint, paddingEnd: 10 }}
+            name="circle-plus"
+            size={25}
+          />
         </View>
       </Pressable>
     </Link>

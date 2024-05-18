@@ -7,17 +7,18 @@ import Colors from "@/constants/Colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useState } from "react";
 import { useCart } from "@/providers/CartProvider";
+import { FontText } from "@/components/FontText";
 
 const ProduitPage = () => {
   const { id_producteur, id_produit } = useLocalSearchParams();
   const producteur = producteurs.find((p) => p.id.toString() === id_producteur);
   if (!producteur || !id_producteur || id_producteur instanceof Array)
-    return <Text>Producteur introuvable</Text>;
+    return <FontText>Producteur introuvable</FontText>;
   const produit = producteur.produits.find(
     (p) => p.id.toString() === id_produit
   );
   if (!produit || !id_produit || id_produit instanceof Array)
-    return <Text>Producteur introuvable</Text>;
+    return <FontText>Producteur introuvable</FontText>;
 
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
@@ -33,7 +34,7 @@ const ProduitPage = () => {
       <View>
         <Image style={styles.image} source={produit.image} />
         <View style={styles.absoluteContainer}>
-          <Text
+          <FontText
             style={{
               fontWeight: 600,
               fontSize: 25,
@@ -47,22 +48,26 @@ const ProduitPage = () => {
             }}
           >
             {produit.nom}
-          </Text>
+          </FontText>
         </View>
       </View>
-      <Text style={{ fontStyle: "italic", textAlign: "right", marginTop: 5 }}>
+      <FontText
+        style={{ fontStyle: "italic", textAlign: "right", marginTop: 5 }}
+      >
         {producteur.nom}
-      </Text>
+      </FontText>
       <View style={styles.card}>
-        <Text style={{ fontSize: 20, fontWeight: 600 }}>Prix :</Text>
-        <Text style={{ fontSize: 20, fontWeight: 600 }}>{produit.prix} €</Text>
+        <FontText style={{ fontSize: 20, fontWeight: 600 }}>Prix :</FontText>
+        <FontText style={{ fontSize: 20, fontWeight: 600 }}>
+          {produit.prix} €
+        </FontText>
       </View>
       {produit.enStock === false ? (
         <Pressable
           style={[styles.button, { opacity: 0.5, marginTop: "auto" }]}
           disabled
         >
-          <Text
+          <FontText
             style={{
               fontWeight: 600,
               fontSize: 20,
@@ -71,7 +76,7 @@ const ProduitPage = () => {
             }}
           >
             Épuisé
-          </Text>
+          </FontText>
         </Pressable>
       ) : (
         <>
@@ -84,22 +89,22 @@ const ProduitPage = () => {
               onPress={() => setQuantity(quantity - 1)}
               disabled={quantity <= 1}
             >
-              <Text style={{ fontSize: 20, fontWeight: 600 }}>-</Text>
+              <FontText style={{ fontSize: 20, fontWeight: 600 }}>-</FontText>
             </Pressable>
-            <Text style={{ fontSize: 20, fontWeight: 600 }}>
+            <FontText style={{ fontSize: 20, fontWeight: 600 }}>
               Quantité : {quantity}
-            </Text>
+            </FontText>
             <Pressable
               style={styles.quantityButton}
               onPress={() => setQuantity(quantity + 1)}
             >
-              <Text style={{ fontSize: 20, fontWeight: 600 }}>+</Text>
+              <FontText style={{ fontSize: 20, fontWeight: 600 }}>+</FontText>
             </Pressable>
           </View>
           <Pressable style={styles.button} onPress={() => handlePress()}>
-            <Text style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
+            <FontText style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
               Ajouter au panier
-            </Text>
+            </FontText>
             <FontAwesome5
               style={{ color: "white" }}
               name="shopping-basket"

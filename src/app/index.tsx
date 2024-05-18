@@ -11,7 +11,6 @@ import {
 import { Link, Redirect } from "expo-router";
 import { Image } from "expo-image";
 import { FontText } from "@/components/FontText";
-import { MonoText } from "@/components/StyledText";
 
 export default function Index() {
   const { session, loading } = useAuth();

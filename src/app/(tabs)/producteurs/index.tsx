@@ -7,7 +7,7 @@ import producteurs from "@/constants/Producteurs";
 import { useState } from "react";
 
 export default function NosProducteursScreen() {
-  const [search, setsearch] = useState("");
+  const [search, setSearch] = useState("");
   const data = producteurs.filter((p) =>
     p.nom.toLowerCase().includes(search.toLowerCase())
   );
@@ -18,7 +18,7 @@ export default function NosProducteursScreen() {
         cursorColor={Colors["light"].tint}
         inputMode="text"
         placeholder={"Rechercher un producteur"}
-        onChangeText={(text) => setsearch(text)}
+        onChangeText={(text) => setSearch(text)}
       />
       <FlatList
         data={data}

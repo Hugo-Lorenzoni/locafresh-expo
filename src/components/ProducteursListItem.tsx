@@ -1,6 +1,7 @@
 import { Text, StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
+import { FontText } from "./FontText";
 
 type ProducteursListItemProps = {
   producteur: {
@@ -26,16 +27,18 @@ const ProducteursListItem = ({ producteur }: ProducteursListItemProps) => {
       <Pressable style={styles.card} key={producteur.id}>
         <Image style={styles.image} source={producteur.image} />
         <View style={styles.text}>
-          <Text style={{ fontWeight: 600, fontSize: 20, marginVertical: 5 }}>
+          <FontText
+            style={{ fontWeight: 600, fontSize: 20, marginVertical: 5 }}
+          >
             {producteur.nom}
-          </Text>
+          </FontText>
           <View>
-            <Text style={{ fontStyle: "italic", textAlign: "right" }}>
+            <FontText style={{ fontStyle: "italic", textAlign: "right" }}>
               {producteur.adresse.split(",")[0]}
-            </Text>
-            <Text style={{ fontStyle: "italic", textAlign: "right" }}>
+            </FontText>
+            <FontText style={{ fontStyle: "italic", textAlign: "right" }}>
               {producteur.adresse.split(",")[1]}
-            </Text>
+            </FontText>
           </View>
         </View>
       </Pressable>

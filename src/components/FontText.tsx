@@ -1,20 +1,20 @@
 import { StyleProp, Text, TextProps, TextStyle } from "react-native";
 
 const CUSTOM_FONT_FAMILY: { [key: string]: string } = {
-  thin: "DegularDisplayThin",
-  thinItalic: "DegularDisplayThinItalic",
-  light: "DegularDisplayLight",
-  lightItalic: "DegularDisplayLightItalic",
-  regular: "DegularDisplayRegular",
-  italic: "DegularDisplayRegularItalic",
-  medium: "DegularDisplayMedium",
-  mediumItalic: "DegularDisplayMediumItalic",
-  semibold: "DegularDisplaySemibold",
-  semiboldItalic: "DegularDisplaySemiboldItalic",
-  bold: "DegularDisplayBold",
-  boldItalic: "DegularDisplayBoldItalic",
-  black: "DegularDisplayBlack",
-  blackItalic: "DegularDisplayBlackItalic",
+  thin: "DegularThin",
+  thinItalic: "DegularThinItalic",
+  light: "DegularLight",
+  lightItalic: "DegularLightItalic",
+  regular: "DegularRegular",
+  regularItalic: "DegularRegularItalic",
+  medium: "DegularMedium",
+  mediumItalic: "DegularMediumItalic",
+  semibold: "DegularSemibold",
+  semiboldItalic: "DegularSemiboldItalic",
+  bold: "DegularBold",
+  boldItalic: "DegularBoldItalic",
+  black: "DegularBlack",
+  blackItalic: "DegularBlackItalic",
 };
 
 const FONT_WEIGHT_MAP: { [key: string]: string } = {
@@ -28,7 +28,7 @@ const FONT_WEIGHT_MAP: { [key: string]: string } = {
 };
 
 const fontStyleAndWeightAsFontFamily = (style: StyleProp<TextStyle>) => {
-  if (!style) return {};
+  if (!style) return { fontFamily: "DegularMedium" };
 
   const styleObject = Array.isArray(style)
     ? Object.assign({}, ...style)
@@ -36,9 +36,7 @@ const fontStyleAndWeightAsFontFamily = (style: StyleProp<TextStyle>) => {
 
   const { fontWeight, fontStyle, ...remainingStyle } = styleObject;
 
-  if (!fontWeight && !fontStyle) return styleObject;
-
-  const fontWeightKey = FONT_WEIGHT_MAP[fontWeight] || "regular";
+  const fontWeightKey = FONT_WEIGHT_MAP[fontWeight] || fontWeight || "regular";
   const fontFamilyKey =
     fontStyle === "italic" ? `${fontWeightKey}Italic` : fontWeightKey;
 

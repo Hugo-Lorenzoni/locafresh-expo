@@ -28,8 +28,8 @@ export default function TabLayout() {
           height: 60,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "bold",
+          fontSize: 13,
+          fontFamily: "DegularBold",
         },
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
