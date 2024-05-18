@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { Image } from "expo-image";
-import { FontAwesome } from "@expo/vector-icons";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 import ProduitsListItem from "@/components/ProduitsListItem";
 
@@ -37,15 +37,15 @@ const ProducteurPage = () => {
       </View>
       <View style={styles.card}>
         <View style={styles.info}>
-          <FontAwesome name="home" />
+          <FontAwesome6 name="house" />
           <Text>{producteur.adresse}</Text>
         </View>
         <View style={styles.info}>
-          <FontAwesome name="phone" />
+          <FontAwesome6 name="phone-volume" />
           <Text>{producteur.telephone}</Text>
         </View>
         <View style={styles.info}>
-          <FontAwesome name="envelope" />
+          <FontAwesome6 name="at" />
           <Text>{producteur.email}</Text>
         </View>
       </View>
@@ -97,9 +97,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 15,
     padding: 10,
-    paddingTop: 5,
     marginTop: 10,
   },
 
-  info: { gap: 5, flexDirection: "row", alignItems: "center" },
+  info: {
+    gap: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

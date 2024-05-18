@@ -4,7 +4,7 @@ import { Image } from "expo-image";
 
 import producteurs from "@/constants/Producteurs";
 import Colors from "@/constants/Colors";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { useState } from "react";
 import { useCart } from "@/providers/CartProvider";
 
@@ -100,7 +100,7 @@ const ProduitPage = () => {
             <Text style={{ fontWeight: 600, fontSize: 20, color: "white" }}>
               Ajouter au panier
             </Text>
-            <FontAwesome
+            <FontAwesome5
               style={{ color: "white" }}
               name="shopping-basket"
               size={20}

@@ -1,19 +1,24 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs } from "expo-router";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { Redirect, Tabs } from "expo-router";
 
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import Colors from "@/constants/Colors";
+import { useAuth } from "@/providers/AuthProvider";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
+  name: React.ComponentProps<typeof FontAwesome5>["name"];
   color: string;
 }) {
-  return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome5 size={20} style={{ marginBottom: -3 }} {...props} />;
 }
 
 export default function TabLayout() {
   // const colorScheme = useColorScheme();
+  const { session } = useAuth();
+  if (!session) {
+    return <Redirect href={"/log-in"} />;
+  }
 
   return (
     <Tabs
@@ -44,7 +49,7 @@ export default function TabLayout() {
           //   <Link href="/modal" asChild>
           //     <Pressable>
           //       {({ pressed }) => (
-          //         <FontAwesome
+          //         <FontAwesome5
           //           name="info-circle"
           //           size={25}
           //           color={Colors["light"].text}
@@ -57,12 +62,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="commandes"
         options={{
-          title: "Liste de course",
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="check-square" color={color} />
-          ),
+          title: "Vos commandes",
+          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
         }}
       />
     </Tabs>
