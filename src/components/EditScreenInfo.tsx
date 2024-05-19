@@ -2,39 +2,31 @@ import React from "react";
 import { StyleSheet } from "react-native";
 
 import { ExternalLink } from "./ExternalLink";
-import { MonoText } from "./StyledText";
 import { Text, View } from "./Themed";
 
 import Colors from "@/constants/Colors";
+import { FontText } from "./FontText";
 
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)"
-        >
+        <FontText style={styles.getStartedText}>
           Open up the code for this screen:
-        </Text>
+        </FontText>
 
         <View
           style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           darkColor="rgba(255,255,255,0.05)"
           lightColor="rgba(0,0,0,0.05)"
         >
-          <MonoText>{path}</MonoText>
+          <FontText>{path}</FontText>
         </View>
 
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)"
-        >
+        <FontText style={styles.getStartedText}>
           Change any of the text, save the file, and your app will automatically
           update.
-        </Text>
+        </FontText>
       </View>
 
       <View style={styles.helpContainer}>
@@ -42,10 +34,10 @@ export default function EditScreenInfo({ path }: { path: string }) {
           style={styles.helpLink}
           href="https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet"
         >
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+          <FontText style={styles.helpLinkText}>
             Tap here if your app doesn't automatically update after making
             changes
-          </Text>
+          </FontText>
         </ExternalLink>
       </View>
     </View>
@@ -79,5 +71,6 @@ const styles = StyleSheet.create({
   },
   helpLinkText: {
     textAlign: "center",
+    color: Colors.light.tint,
   },
 });

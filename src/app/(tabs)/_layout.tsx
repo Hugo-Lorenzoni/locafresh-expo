@@ -45,31 +45,14 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="address-book" color={color} />
           ),
-          // headerRight: () => (
-          //   <Link href="/modal" asChild>
-          //     <Pressable>
-          //       {({ pressed }) => (
-          //         <FontAwesome5
-          //           name="info-circle"
-          //           size={25}
-          //           color={Colors["light"].text}
-          //           style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-          //         />
-          //       )}
-          //     </Pressable>
-          //   </Link>
-          // ),
         }}
       />
       <Tabs.Screen
-        name="commandes"
+        name="profile"
         options={{
-          title: "Vos commandes",
-          headerTitleStyle: {
-            fontFamily: "DegularSemibold",
-            fontSize: 25,
-          },
-          tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+          title: "Votre profile",
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
     </Tabs>

@@ -8,7 +8,7 @@ import { FontText } from "./FontText";
 type ProduitsListItemProps = {
   id: string;
   produit: {
-    id: number;
+    id: string;
     nom: string;
     prix: number;
     image: any;

@@ -7,7 +7,7 @@ import { Link, Stack } from "expo-router";
 import { Pressable, View } from "react-native";
 
 const _layout = () => {
-  const { items } = useCart();
+  const { items, totalQuantity } = useCart();
   return (
     <Stack
       screenOptions={{
@@ -52,7 +52,7 @@ const _layout = () => {
                         }}
                       >
                         {" "}
-                        {items.length}
+                        {totalQuantity}
                       </FontText>
                     )}
                   </View>

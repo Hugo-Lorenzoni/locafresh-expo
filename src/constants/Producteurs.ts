@@ -8,19 +8,19 @@ const producteurs = [
     image: require("@assets/images/producteurs/fermedelaprairie.jpg"),
     produits: [
       {
-        id: 1,
+        id: "3q57f6q3sdq1qef345qce",
         nom: "Lait",
         image: require("@assets/images/produits/lait.jpg"),
         prix: 1.5,
       },
       {
-        id: 2,
+        id: "z36eq5f43qzr5gs4v35df",
         nom: "Beurre",
         image: require("@assets/images/produits/beurre.jpg"),
         prix: 1,
       },
       {
-        id: 3,
+        id: "33uy86fk5h4lui53hvj4j",
         nom: "Fromage",
         image: require("@assets/images/produits/fromage.jpg"),
         prix: 4,
@@ -36,19 +36,19 @@ const producteurs = [
     image: require("@assets/images/producteurs/vergersdusoleil.jpg"),
     produits: [
       {
-        id: 1,
+        id: "6guil574kjhwd3s4vx3fg",
         nom: "Pommes",
         image: require("@assets/images/produits/pommes.jpg"),
         prix: 1,
       },
       {
-        id: 2,
+        id: "39g36egd574wgwfd3g645",
         nom: "Poires",
         image: require("@assets/images/produits/poires.jpg"),
         prix: 1.5,
       },
       {
-        id: 3,
+        id: "56smefksd3f4g5s3d4g5s",
         nom: "Cerises",
         image: require("@assets/images/produits/cerises.jpg"),
         prix: 3,
@@ -64,20 +64,20 @@ const producteurs = [
     image: require("@assets/images/producteurs/mielduvallon.jpg"),
     produits: [
       {
-        id: 1,
+        id: "646gerhtrj43ds3sd4g5s",
         nom: "Miel de fleurs",
         image: require("@assets/images/produits/mieldefleurs.jpg"),
         prix: 2.5,
       },
       {
-        id: 2,
+        id: "76e43fqsd1c9+eqs6df4g",
         nom: "Miel de sapin",
         image: require("@assets/images/produits/mielsapin.jpg"),
         prix: 3,
         enStock: false,
       },
       {
-        id: 3,
+        id: "9ze864fs5dv31x2cs3dg4s",
         nom: "Miel de tilleul",
         image: require("@assets/images/produits/mieltilleul.jpg"),
         prix: 3.5,
@@ -93,19 +93,19 @@ const producteurs = [
     image: require("@assets/images/producteurs/fermedupetitruisseau.jpg"),
     produits: [
       {
-        id: 1,
+        id: "ze354dv6g35dsf4bn35c4s",
         nom: "Lait",
         image: require("@assets/images/produits/lait.jpg"),
         prix: 1.5,
       },
       {
-        id: 2,
+        id: "zq5esd74v5sdv4s3d4g5sf",
         nom: "Beurre",
         image: require("@assets/images/produits/beurre.jpg"),
         prix: 1.2,
       },
       {
-        id: 3,
+        id: "zq5esd74123454s3d4g5sf",
         nom: "Oeufs",
         image: require("@assets/images/produits/oeufs.jpg"),
         prix: 2.3,
@@ -121,31 +121,31 @@ const producteurs = [
     image: require("@assets/images/producteurs/lacremerieducoin.jpg"),
     produits: [
       {
-        id: 1,
+        id: "ysthwbgfnxw4s3d4g5s3d1",
         nom: "Lait",
         image: require("@assets/images/produits/lait.jpg"),
         prix: 1.1,
       },
       {
-        id: 2,
+        id: "q3zr54fs6dv31w6sdf5vwd",
         nom: "Beurre",
         image: require("@assets/images/produits/beurre.jpg"),
         prix: 1.2,
       },
       {
-        id: 3,
+        id: "q87sd56qsd765sd6q7zq6d",
         nom: "Platteau de fromage",
         image: require("@assets/images/produits/platteaudefromage.jpg"),
         prix: 5.5,
       },
       {
-        id: 4,
+        id: "49ez684gsr1dv3f5vsd4ds",
         nom: "Oeufs",
         image: require("@assets/images/produits/oeufs.jpg"),
         prix: 2.5,
       },
       {
-        id: 5,
+        id: "6qSD431QS3D1QS3D3sdf1s",
         nom: "Crème",
         image: require("@assets/images/produits/creme.jpg"),
         prix: 1.8,
@@ -161,19 +161,19 @@ const producteurs = [
     image: require("@assets/images/producteurs/laiterieducoteau.jpg"),
     produits: [
       {
-        id: 1,
+        id: "zq5esd74v5sdg5s3d4g5sd",
         nom: "Lait",
         image: require("@assets/images/produits/lait.jpg"),
         prix: 1.3,
       },
       {
-        id: 2,
+        id: "zq5esd74v123v4s3d4g5sf",
         nom: "Beurre",
         image: require("@assets/images/produits/beurre.jpg"),
         prix: 1.1,
       },
       {
-        id: 3,
+        id: "zq5esd7412345789d4g5sf",
         nom: "Yaourts",
         image: require("@assets/images/produits/yaourts.jpg"),
         prix: 2,

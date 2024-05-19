@@ -12,7 +12,7 @@ type ProducteursListItemProps = {
     email: string;
     image: any;
     produits: {
-      id: number;
+      id: string;
       nom: string;
       prix: number;
       image: any;

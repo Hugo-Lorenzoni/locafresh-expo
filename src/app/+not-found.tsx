@@ -7,7 +7,15 @@ import { FontText } from "@/components/FontText";
 export default function NotFoundScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: "Oops!" }} />
+      <Stack.Screen
+        options={{
+          title: "Oops!",
+          headerTitleStyle: {
+            fontFamily: "DegularSemibold",
+            fontSize: 25,
+          },
+        }}
+      />
       <View style={styles.container}>
         <FontText style={styles.title}>This screen doesn't exist.</FontText>
 
