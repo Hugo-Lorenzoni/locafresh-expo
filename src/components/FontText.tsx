@@ -34,7 +34,7 @@ const fontStyleAndWeightAsFontFamily = (style: StyleProp<TextStyle>) => {
     ? Object.assign({}, ...style)
     : style;
 
-  const { fontWeight, fontStyle, ...remainingStyle } = styleObject;
+  const { fontWeight, fontStyle, fontSize, ...remainingStyle } = styleObject;
 
   const fontWeightKey = FONT_WEIGHT_MAP[fontWeight] || fontWeight || "regular";
   const fontFamilyKey =
@@ -42,7 +42,8 @@ const fontStyleAndWeightAsFontFamily = (style: StyleProp<TextStyle>) => {
 
   return {
     fontFamily: CUSTOM_FONT_FAMILY[fontFamilyKey],
-    paddingBottom: 2.5,
+    paddingBottom: fontSize / 5 || 2.5,
+    fontSize: fontSize,
     ...remainingStyle,
   };
 };

@@ -13,8 +13,8 @@ type Group = (typeof GROUPS)[number];
 
 type Profile = {
   id: string;
-  user_id: string;
   username: string;
+  full_name: string;
   website: string;
   avatar_url: string;
   group: Group;
@@ -42,7 +42,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fecthSession = async () => {
+    const fetchSession = async () => {
       const {
         data: { session },
         error,
@@ -59,10 +59,15 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
       }
       setLoading(false);
     };
-    fecthSession();
-    supabase.auth.onAuthStateChange((_event, session) => {
+    fetchSession();
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
   return (
     <AuthContext.Provider

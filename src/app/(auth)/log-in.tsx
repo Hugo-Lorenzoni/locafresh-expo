@@ -29,12 +29,12 @@ export default function LogIn() {
   const [loading, setLoading] = useState(false);
 
   async function handlePress() {
-    setLoading(true);
     const result = FormData.safeParse({ email, password });
     if (!result.success) {
       setError(result.error.errors[0].message);
       return;
     }
+    setLoading(true);
     setError("");
 
     const { error } = await supabase.auth.signInWithPassword({
@@ -61,6 +61,7 @@ export default function LogIn() {
         onChangeText={setEmail}
         placeholder="email@gmail.com"
         style={styles.input}
+        keyboardType="email-address"
       />
 
       <FontText style={styles.label}>Mot de passe</FontText>

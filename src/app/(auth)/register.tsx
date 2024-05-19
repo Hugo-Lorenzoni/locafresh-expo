@@ -38,7 +38,6 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   async function handlePress() {
-    setLoading(true);
     const result = FormData.safeParse({ email, password, confirmPassword });
     if (!result.success) {
       setError(result.error.errors[0].message);
@@ -46,6 +45,7 @@ export default function Register() {
     }
     setError("");
 
+    setLoading(true);
     const { error } = await supabase.auth.signUp({ email, password });
     if (error) {
       Alert.alert(error.message);
@@ -67,6 +67,7 @@ export default function Register() {
         onChangeText={setEmail}
         placeholder="email@gmail.com"
         style={styles.input}
+        keyboardType="email-address"
       />
 
       <FontText style={styles.label}>Mot de passe</FontText>
