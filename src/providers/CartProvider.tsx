@@ -67,10 +67,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     router.push("/(tabs)/producteurs");
   };
 
-  const total = items.reduce(
-    (acc, item) => acc + item.produit.prix * item.quantity,
-    0
-  );
+  const total = +items
+    .reduce((acc, item) => acc + item.produit.prix * item.quantity, 0)
+    .toFixed(2);
   const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
 
   return (

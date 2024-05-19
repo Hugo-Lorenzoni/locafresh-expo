@@ -40,7 +40,11 @@ const fontStyleAndWeightAsFontFamily = (style: StyleProp<TextStyle>) => {
   const fontFamilyKey =
     fontStyle === "italic" ? `${fontWeightKey}Italic` : fontWeightKey;
 
-  return { fontFamily: CUSTOM_FONT_FAMILY[fontFamilyKey], ...remainingStyle };
+  return {
+    fontFamily: CUSTOM_FONT_FAMILY[fontFamilyKey],
+    paddingBottom: 2.5,
+    ...remainingStyle,
+  };
 };
 
 export const FontText = (props: TextProps) => {

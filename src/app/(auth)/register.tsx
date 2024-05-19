@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     padding: 10,
-    paddingTop: 7.5,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",

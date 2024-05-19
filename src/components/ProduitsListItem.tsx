@@ -40,7 +40,6 @@ const ProduitsListItem = ({ produit, id }: ProduitsListItemProps) => {
                     backgroundColor: "darkgrey",
                     color: "white",
                     paddingBottom: 5,
-                    paddingTop: 2.5,
                     paddingHorizontal: 10,
                     borderRadius: 10,
                   }}
