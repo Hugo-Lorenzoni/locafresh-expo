@@ -19,8 +19,8 @@ export default function TabLayout() {
   if (!session) {
     return <Redirect href={"/(auth)/log-in"} />;
   }
-  if (profile?.group === "PRODUCTEUR") {
-    return <Redirect href={"/(producteurs)"} />;
+  if (profile?.group === "USER") {
+    return <Redirect href={"/(tabs)"} />;
   }
 
   return (
@@ -41,9 +41,9 @@ export default function TabLayout() {
     >
       <Tabs.Screen name="index" options={{ href: null }} />
       <Tabs.Screen
-        name="producteurs"
+        name="produits"
         options={{
-          title: "Nos producteurs",
+          title: "Vos produits",
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="address-book" color={color} />

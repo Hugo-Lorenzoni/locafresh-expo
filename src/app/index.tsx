@@ -13,7 +13,7 @@ import { Image } from "expo-image";
 import { FontText } from "@/components/FontText";
 
 export default function Index() {
-  const { session, loading } = useAuth();
+  const { session, isAdmin, loading } = useAuth();
 
   if (loading) {
     return <ActivityIndicator />;
@@ -23,6 +23,10 @@ export default function Index() {
     return <Redirect href={"/log-in"} />;
   }
 
+  if (!isAdmin) {
+    return <Redirect href={"/(tabs)"} />;
+  }
+
   return (
     <View style={{ flex: 1, justifyContent: "center", padding: 10 }}>
       <Image
@@ -30,7 +34,7 @@ export default function Index() {
         source={require("@assets/images/locafresh_condensed.png")}
         contentFit="contain"
       />
-      <Link href={"/producteurs"} asChild>
+      <Link href={"/(tabs)/producteurs"} asChild>
         <Pressable style={styles.button}>
           <FontText
             style={{
@@ -39,11 +43,24 @@ export default function Index() {
               color: "white",
             }}
           >
-            Producteurs
+            Espace client
           </FontText>
         </Pressable>
       </Link>
-      <Link href={"/log-in"} asChild>
+      <Link href={"/(producteurs)/produits"} asChild>
+        <Pressable style={styles.button}>
+          <FontText
+            style={{
+              fontWeight: 600,
+              fontSize: 25,
+              color: "white",
+            }}
+          >
+            Espace producteurs
+          </FontText>
+        </Pressable>
+      </Link>
+      {/* <Link href={"/log-in"} asChild>
         <Pressable style={styles.button}>
           <FontText
             style={{
@@ -55,7 +72,7 @@ export default function Index() {
             Se connecter
           </FontText>
         </Pressable>
-      </Link>
+      </Link> */}
       <Pressable
         style={[styles.button, { backgroundColor: "tomato" }]}
         onPress={() => supabase.auth.signOut()}

@@ -64,6 +64,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const clearCart = () => {
     setItems([]);
+    router.push("/(tabs)/producteurs");
   };
 
   const total = items.reduce(
