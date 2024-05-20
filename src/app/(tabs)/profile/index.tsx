@@ -13,6 +13,7 @@ export default function ProfileIndexPage() {
     { title: "Mes informations", href: "/profile/informations" },
     { title: "Mes adresses", href: "/profile/addresses" },
     { title: "Mes moyens de paiement", href: "/profile/payment-methods" },
+    { title: "Devenir producteur", href: "/profile/devenir-producteur" },
   ];
   return (
     <View style={styles.container}>
