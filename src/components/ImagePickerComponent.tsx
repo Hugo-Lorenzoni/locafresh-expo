@@ -1,7 +1,6 @@
 import { FontAwesome6 } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import * as ImagePicker from "expo-image-picker";
-import { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import Button from "./Button";
 
@@ -9,8 +8,10 @@ export default function ImagePickerComponent({
   image,
   setImage,
 }: {
-  image: string | null;
-  setImage: React.Dispatch<React.SetStateAction<string | null>>;
+  image: ImagePicker.ImagePickerAsset | null;
+  setImage: React.Dispatch<
+    React.SetStateAction<ImagePicker.ImagePickerAsset | null>
+  >;
 }) {
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -20,7 +21,7 @@ export default function ImagePickerComponent({
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      setImage(result.assets[0]);
     }
   };
 
@@ -30,7 +31,7 @@ export default function ImagePickerComponent({
         <>
           <View>
             <Image
-              source={{ uri: image }}
+              source={{ uri: image.uri }}
               contentFit="contain"
               style={styles.image}
             />

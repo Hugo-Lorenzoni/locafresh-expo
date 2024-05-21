@@ -2,9 +2,13 @@ import Button from "@/components/Button";
 import { FontText } from "@/components/FontText";
 import { FontTextInput } from "@/components/FontTextInput";
 import ImagePickerComponent from "@/components/ImagePickerComponent";
-import { Stack } from "expo-router";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/providers/AuthProvider";
+import { Stack, router } from "expo-router";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from "expo-file-system";
 
 // const handleImageUpload = async () => {
 //     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -23,26 +27,74 @@ type Producteur = {
   nom: string;
   rue: string;
   numero: string;
-  codePostal: string;
+  code_postal: string;
   ville: string;
   telephone: string;
   email: string;
 };
 
 export default function DevenirProducteurPage() {
+  const { session, profile } = useAuth();
+  if (!session) {
+    return null;
+  }
   const [producteur, setProducteur] = useState<Producteur>({
     nom: "",
     rue: "",
     numero: "",
-    codePostal: "",
+    code_postal: "",
     ville: "",
     telephone: "",
     email: "",
   });
-  const [image, setImage] = useState<string | null>(null);
+  const [image, setImage] = useState<ImagePicker.ImagePickerAsset | null>(null);
 
   const handleChange = (key: string, value: string) => {
     setProducteur((prev) => ({ ...prev, [key]: value }));
+  };
+  const handlePress = async () => {
+    console.log(producteur);
+    console.log(image);
+    if (!image) {
+      console.log("no image");
+      return;
+    }
+
+    const base64Img = await FileSystem.readAsStringAsync(image.uri, {
+      encoding: FileSystem?.EncodingType?.Base64,
+    });
+    // console.log(base64Img);
+
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from("files")
+      .upload(`${session?.user?.id}/${image?.fileName}`, base64Img);
+    console.log(uploadData, uploadError);
+
+    // const { rue, numero, code_postal, ville, ...reste } = producteur;
+
+    // const adresse = `${rue} ${numero}, ${code_postal} ${ville}`;
+
+    const { data: insertData, error: insertError } = await supabase
+      .from("producteurs")
+      .insert({
+        id: session?.user?.id,
+        ...producteur,
+        image: uploadData?.path,
+      });
+    console.log(insertData, insertError);
+
+    const group = "PRODUCTEUR";
+
+    const { data: updateData, error: updateError } = await supabase
+      .from("profiles")
+      .update({ group })
+      .eq("id", session?.user?.id);
+    console.log(updateData, updateError);
+
+    // supabase.auth.reauthenticate();
+    // router.navigate("(producteurs)/");
+    supabase.auth.refreshSession();
+    // supabase.auth.signOut();
   };
 
   return (
@@ -79,6 +131,7 @@ export default function DevenirProducteurPage() {
           onChangeText={(text) => handleChange("numero", text)}
           placeholder="Numéro"
           style={styles.input}
+          keyboardType="number-pad"
         />
       </View>
       <View style={styles.group}>
@@ -91,10 +144,11 @@ export default function DevenirProducteurPage() {
         />
         <FontText style={styles.subLabel}>Code postal :</FontText>
         <FontTextInput
-          value={producteur.codePostal}
-          onChangeText={(text) => handleChange("codePostal", text)}
+          value={producteur.code_postal}
+          onChangeText={(text) => handleChange("code_postal", text)}
           placeholder="7000"
           style={styles.input}
+          keyboardType="number-pad"
         />
       </View>
       <FontText style={styles.label}>Téléphone</FontText>
@@ -111,7 +165,7 @@ export default function DevenirProducteurPage() {
       <Button
         style={{ marginBottom: 35 }}
         title="Devenir producteur"
-        onPress={() => console.log(producteur)}
+        onPress={handlePress}
       />
     </ScrollView>
   );

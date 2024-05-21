@@ -43,6 +43,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const fetchSession = async () => {
+      setLoading(true);
       const {
         data: { session },
         error,
@@ -62,8 +63,8 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     fetchSession();
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      fetchSession();
     });
     return () => {
       subscription?.unsubscribe();
